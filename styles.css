@@ -1,0 +1,210 @@
+/* ===== Cấu hình cơ bản ===== */
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  background: #d0f0ff;
+  padding: 20px;
+}
+
+/* ===== Track đua ===== */
+.track {
+  position: relative;
+  width: 90%;
+  height: 60px;
+  margin: 10px auto;
+  border: 2px dashed #4fc3f7;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 183, 255, 0.3);
+  background: linear-gradient(90deg, #a0e9f0 25%, #d4f6ff 50%, #a0e9f0 75%);
+  background-size: 200% 100%;
+  animation: wave 3s linear infinite;
+}
+
+@keyframes wave {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* ===== Vịt ===== */
+.duck {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  font-size: 32px;
+  transition: left 0.1s;
+  animation: float 1.5s ease-in-out infinite;
+}
+
+.duck.winner {
+  animation: shake 0.5s infinite;
+  font-weight: bold;
+  color: #ff4081;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes shake {
+  0% { transform: translate(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* ===== Vịt phá đám ===== */
+.trouble-duck {
+  position: absolute;
+  top: 0;
+  left: -50px;
+  font-size: 28px;
+  color: red;
+  z-index: 10;
+  animation: trouble-float 1.5s ease-in-out infinite;
+}
+
+@keyframes trouble-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+/* ===== Cheer ===== */
+.cheer {
+  display: none;
+  font-size: 24px;
+  margin: 10px;
+  color: red;
+  animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ===== Giao diện kết quả ===== */
+#resultContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+#progressContainer,
+#leaderboardContainer {
+  flex: 1 1 300px;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* ===== Bảng xếp hạng ===== */
+#leaderboard {
+  text-align: left;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+#leaderboard li {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+/* ===== Bảng tiến độ ===== */
+#progressTable {
+  border-collapse: collapse;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#progressTable th {
+  background-color: #4fc3f7;
+  color: white;
+  font-weight: bold;
+}
+
+#progressTable th, #progressTable td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+#progressTable tr:nth-child(even) {
+  background: #f0faff;
+}
+
+/* ===== Nút và input ===== */
+button,
+input[type="text"],
+input[type="number"] {
+  text-align: center;
+  width: 90%;
+  font-size: 16px;
+  padding: 10px;
+  margin: 5px 0;
+  border: 2px solid #4fc3f7;
+  border-radius: 8px;
+  background-color: #e0f7fa;
+  font-weight: bold;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background-color: #b2ebf2;
+}
+
+/* ===== Responsive Mobile ===== */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .track {
+    height: 40px;
+  }
+
+  .duck {
+    font-size: 24px;
+  }
+
+  .cheer {
+    font-size: 16px;
+  }
+
+  #resultContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.countdown-ui {
+  display: none;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  color: #ff1744;
+  font-weight: bold;
+  z-index: 9999;
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5) translate(-50%, -50%); opacity: 0; }
+  50% { transform: scale(1.2) translate(-50%, -50%); opacity: 1; }
+  100% { transform: scale(1) translate(-50%, -50%); }
+}

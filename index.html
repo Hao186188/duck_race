@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <h1>🐥 Trò chơi Đua Vịt!</h1>
+
+    <label>Chọn số lượng vịt:
+        <input type="number" id="duckCount" value="3" min="2" max="10" onchange="createNameInputs()">
+    </label>
+
+    <div id="nameInputs"></div>
+
+    <button onclick="createNameInputs()">Tạo ô nhập tên</button>
+    <button onclick="autoFillNames()">Tự đặt tên</button>
+    <button onclick="setupRace()">Chuẩn bị đua</button>
+    <button onclick="startRace()" id="startBtn">Bắt đầu đua</button>
+
+    <!-- Khu vực cổ vũ -->
+    <div id="cheer" style="display:none; text-align:center; font-size: 20px; color: #ff4081; margin: 10px;"></div>
+
+    <!-- Khu vực đua -->
+
+    <div id="raceArea"></div>
+
+    <!-- Kết quả: bảng tiến độ và bảng xếp hạng -->
+    <div id="resultContainer">
+        <div id="progressContainer">
+            <h3>Tiến độ cuộc đua</h3>
+            <table id="progressTable">
+                <thead>
+                    <tr>
+                        <th>Vịt</th>
+                        <th>Người chơi</th>
+                        <th>Tiến độ</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div id="leaderboardContainer">
+            <h3>Bảng xếp hạng</h3>
+            <ul id="leaderboard"></ul>
+        </div>
+    </div>
+
+    <div id="winner"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
